@@ -1,16 +1,18 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
-const route = require('./routes');
-const authMiddleware = require('./middlewares/authMiddleware');
-const db = require('./config/dbConfig');
-const Users = require('./models/UserModel');
 const cookieParser = require('cookie-parser');
-const app = express();
+const morgan = require('morgan');
 
 dotenv.config();
+const route = require('./routes/routes');
+const db = require('./config/dbConfig');
+const Users = require('./models/UserModel');
+const app = express();
+
+app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(express.json());
+app.use(express.json({extended: true}));
 app.use(cors());
 app.use(route);
 

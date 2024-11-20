@@ -1,10 +1,11 @@
 {
   "name": "smartbite-api",
   "version": "1.0.0",
-  "author": "Fajar Ihsana",
+  "author": "Fajar Ihsana, Anam Sadat",
   "main": "src/server.js",
   "description": "",
   "keywords": [
+    "smartbite",
     "capstone",
     "api"
   ],
@@ -19,8 +20,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "firebase-admin": "^13.0.0",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
     "mysql2": "^3.11.4",
     "sequelize": "^6.37.5"
   }
