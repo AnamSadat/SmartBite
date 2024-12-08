@@ -33,9 +33,13 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const token = jwt.sign({ id: user.id, username: user.email }, SECRET_KEY, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { id: user.id_user, username: user.email },
+      SECRET_KEY,
+      {
+        expiresIn: "1h",
+      }
+    );
     res.status(200).json({ token });
   } catch (error) {
     console.error(error);
@@ -44,7 +48,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 };
 
 export const register = async (req: Request, res: Response): Promise<void> => {
-  const { name, email, password, age, weight, height } = req.body;
+  const { name, email, password, age, gender, weight, height } = req.body;
 
   try {
     // Validasi input sederhana
@@ -70,11 +74,12 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       data: {
         email,
         password: hashedPassword,
-        profiles: {
+        profile: {
           create: [
             {
               name,
               age,
+              gender,
               weight,
               height,
             },

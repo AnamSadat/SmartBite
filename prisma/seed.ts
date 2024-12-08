@@ -17,11 +17,12 @@ async function main() {
     data: {
       email: "john.doe@example.com",
       password: hashedPassword1,
-      profiles: {
+      profile: {
         create: [
           {
             name: "John Doe",
             age: 30,
+            gender: "Laki-laki",
             weight: 75.5,
             height: 175.0,
           },
@@ -34,11 +35,12 @@ async function main() {
     data: {
       email: "jane.doe@example.com",
       password: hashedPassword2,
-      profiles: {
+      profile: {
         create: [
           {
             name: "Jane Doe",
             age: 25,
+            gender: "Perempuan",
             weight: 55.5,
             height: 170.0,
           },
