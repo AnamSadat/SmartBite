@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id_user            Int                  @id @default(autoincrement())
+  email              String               @unique @db.VarChar(45)
+  password           String               @db.VarChar(255)
+  model_logs         model_logs[]
+  profile            profile[]
+  recommendations    recommendations[]
+  user_meals_history user_meals_history[]
+  active_tokens      active_tokens[]
+
+  @@map("users")
+}
+
+model food_items {
+  id_food_items      Int                  @id @default(autoincrement())
+  name               String               @db.VarChar(45)
+  calories           Float
+  protein            Float
+  carbohydrate       Float
+  fat                Float
+  serving_size       Float                @default(100)
+  // image_url          String               @db.Text
+  model_logs         model_logs[]
+  recommendations    recommendations[]
+  user_meals_history user_meals_history[]
+}
+
+model model_logs {
+  id_log            Int        @id @default(autoincrement())
+  user_id           Int
+  image_input_url   String     @db.Text
+  predicted_food_id Int
+  confidence_score  Float
+  created_at        DateTime   @db.DateTime(0)
+  users             User       @relation(fields: [user_id], references: [id_user], onDelete: Cascade, onUpdate: NoAction)
+  food_items        food_items @relation(fields: [predicted_food_id], references: [id_food_items], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model profile {
+  id_profile Int    @id @default(autoincrement())
+  user_id    Int    @unique
+  name       String @db.VarChar(255)
+  age        Int
+  gender     String @db.VarChar(255)
+  weight     Int
+  height     Int
+  users      User   @relation(fields: [user_id], references: [id_user], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+model recommendations {
+  id_recommendations Int        @id @default(autoincrement())
+  user_id            Int
+  food_id            Int
+  create_at          DateTime   @db.DateTime(0)
+  users              User       @relation(fields: [user_id], references: [id_user], onDelete: Cascade, onUpdate: NoAction)
+  food_items         food_items @relation(fields: [food_id], references: [id_food_items], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([food_id])
+}
+
+model active_tokens {
+  id_token Int    @id @default(autoincrement())
+  user_id  Int    @unique
+  token    String @db.Text
+  users    User   @relation(fields: [user_id], references: [id_user], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([user_id])
+}
+
+model user_meals_history {
+  iduser_meals_history Int        @id @default(autoincrement())
+  user_id              Int
+  food_id              Int
+  consumed_at          DateTime   @db.DateTime(0)
+  quantity             Int
+  total_calories       Float
+  users                User       @relation(fields: [user_id], references: [id_user], onDelete: Cascade, onUpdate: NoAction)
+  food_items           food_items @relation(fields: [food_id], references: [id_food_items], onDelete: Cascade, onUpdate: NoAction)
+}

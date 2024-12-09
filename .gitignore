@@ -1,0 +1,27 @@
+node_modules
+# Keep environment variables out of version control
+.env
+service_account.json
+best_model_cnn.keras
+dist
+prisma/dev.db-journal
+prisma/*.db
+pnpm-lock.yaml
+
+# Abaikan folder virtual environment
+
+menv/
+env/
+
+# Abaikan file Python yang tidak perlu
+
+**pycache**/
+_.pyc
+_.pyo
+
+# Abaikan folder dan file lain yang tidak perlu
+
+.git/
+.DS_Store
+.idea/
+\*.log
