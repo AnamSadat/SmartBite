@@ -10,7 +10,7 @@ pnpm-lock.yaml
 
 # Abaikan folder virtual environment
 
-menv/
+venv/
 env/
 
 # Abaikan file Python yang tidak perlu

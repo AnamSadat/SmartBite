@@ -3,18 +3,11 @@ from .libs.prediction import predict_food
 from .middleware.auth import authenticate
 from .libs.storage import allowed_file, upload_file, delete_file
 from .libs.recomendation import recommend_by_calories
-import mysql.connector
+from .libs.db import get_mysql_connection
 from datetime import datetime
 
 main = Blueprint('main', __name__)
-
-sql = mysql.connector.connect(
-    host="localhost",
-    port=3306,
-    user="root",
-    password="Ihsana12_",
-    database="smartbite_db"
-)
+sql = get_mysql_connection()
 db = sql.cursor()
 
 
@@ -68,8 +61,11 @@ def predict():
 
 
 @main.route('/recomendation', methods=['GET'])
+@authenticate
 def recomendation():
+    calorie = request.args.get('calorie', 0)
+    if not calorie:
+        return jsonify({"status": "fail", "message": "Missing calorie parameter"}), 400
     calorie_input = float(request.args.get('calorie', 0))
     recomendation = recommend_by_calories(calorie_input, top_n=5)
-    print(recomendation)
     return jsonify({"status": "success", "data": recomendation}), 200

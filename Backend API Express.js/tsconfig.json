@@ -13,7 +13,8 @@
   "include": [
     "src/**/*", // Sertakan file dalam folder src
     "prisma/**/*", // Sertakan file dalam folder prisma
-    "src/express.d.ts"
-, "seed.ts"  ],
+    "src/express.d.ts",
+    "seed.ts"
+  ],
   "exclude": ["node_modules"]
 }

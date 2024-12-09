@@ -1,7 +1,6 @@
 # Abaikan folder virtual environment
 
-menv/
-env/
+venv/
 
 # Abaikan file Python yang tidak perlu
 

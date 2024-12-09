@@ -21,4 +21,4 @@ COPY . /app/
 EXPOSE 8080
 
 # Tentukan command untuk menjalankan aplikasi
-CMD ["python", "-m", "app.main"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]

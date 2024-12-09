@@ -1,6 +1,14 @@
 # SMARTBITE MACHINE LEARNING API 🤖
 
+## Installation
+
+```bash
+  pip install -r requirements.txt
+```
+
 ## API URL
+
+[Click Here](https://smartbite-ml-img-367241174085.asia-southeast2.run.app)
 
 ## Build With
 
@@ -23,3 +31,15 @@ This endpoint is used to predict the nutritional content of a food image uploade
 | Method | Input | Description                       |
 | :----- | :---- | :-------------------------------- |
 | POST   | file  | **Required**. Authorization token |
+
+#### Food Recomendation
+
+This endpoint is used to obtain food recommendations based on calories.
+
+```http
+  GET /api/recomendation?calorie
+```
+
+| Method | Input   | Description                       |
+| :----- | :------ | :-------------------------------- |
+| GET    | calorie | **Required**. Authorization token |
