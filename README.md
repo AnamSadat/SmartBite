@@ -23,7 +23,3 @@ Smartbite is an app that detects the nutritional and calorie content of food. Ma
 - [Machine Learning](https://github.com/AnamSadat/SmartBite/tree/ML)
 - [Cloud Computing](https://github.com/AnamSadat/SmartBite/tree/CC)
 - [Mobile Development](https://github.com/AnamSadat/SmartBite/tree/MD)
-## Authors
-
-- [@octokatherine](https://www.github.com/octokatherine)
-
