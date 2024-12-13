@@ -17,7 +17,7 @@
 Smartbite is an app that detects the nutritional and calorie content of food. Make it easy for users to choose food based on calories
 
 ## Download APP
-[Click Here](https://www.github.com/octokatherine) to download Smartbite app
+[Click Here](https://github.com/AnamSadat/SmartBite/raw/refs/heads/MD/smartbite-beta.apk) to download Smartbite app
 
 ## Repository Branch
 - [Machine Learning](https://github.com/AnamSadat/SmartBite/tree/ML)
