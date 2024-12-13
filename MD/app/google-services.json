@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "787055846570",
+    "project_id": "smartbite-0e0632cb",
+    "storage_bucket": "smartbite-0e0632cb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787055846570:android:c9fb1274bb7c04ce9f1cd3",
+        "android_client_info": {
+          "package_name": "com.capstone.smartbite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787055846570-77ckbob9bdvlgof01q4rrnbcshr98p8u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.smartbite",
+            "certificate_hash": "f4932e236f499276b88c2b6a3ce56d6eb6d4ef70"
+          }
+        },
+        {
+          "client_id": "787055846570-ief3s0bsg1mlh382eak5defq47f233nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzGiNTM6ZQuHcM8OrBm0rZy8UE102KGQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787055846570-ief3s0bsg1mlh382eak5defq47f233nf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
