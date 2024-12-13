@@ -14,7 +14,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def upload_file(file, user_id):
+def upload_file(file, user_id='smartbite'):
     try:
         timestamp = datetime.now().strftime('%Y-%m-%d_%H%M%S')
         filename = f"image_{timestamp}_{user_id}.jpg"

@@ -12,7 +12,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     // Validasi input
     if (!email || !password) {
-      res.status(400).json({ status: "fail", message: "Email and password are required" });
+      res.status(400).json({ error: true, message: "Email and password are required" });
       return;
     }
 
@@ -22,14 +22,14 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     });
 
     if (!user) {
-      res.status(404).json({ status: "fail", message: "Email not found" });
+      res.status(404).json({ error: true, message: "Email not found" });
       return;
     }
 
     // Verifikasi password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      res.status(401).json({ status: "fail", message: "Invalid email or password" });
+      res.status(401).json({ error: true, message: "Invalid email or password" });
       return;
     }
 
@@ -62,10 +62,10 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         },
       })
     }
-    res.status(200).json({ status: "success", message: "Login successful", token });
+    res.status(200).json({ error: false, message: "Login successful", token });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ status: "error", message: "An error occurred during login" });
+    res.status(500).json({ error: true, message: "An error occurred during login" });
   }
 };
 
@@ -77,14 +77,14 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     if (!name || !email || !password) {
       res
         .status(400)
-        .json({ status: "fail", message: "Name, email, and password are required" });
+        .json({ error: true, message: "Name, email, and password are required" });
       return;
     }
 
     // Periksa apakah email sudah terdaftar
     const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
-      res.status(400).json({ status: "fail",message: "Email already in use" });
+      res.status(400).json({ error: true, message: "Email already in use" });
       return;
     }
 
@@ -112,10 +112,10 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
     // Kirim respons tanpa password
     const { password: _, ...userWithoutPassword } = newUser;
-    res.status(201).json({status: "success", message: "User registered successfully" });
+    res.status(201).json({error: false, message: "User registered successfully" });
   } catch (error) {                               
     console.error(error);
-    res.status(500).json({status: "error", error: "Failed to register user" });
+    res.status(500).json({error: true, message: "Failed to register user" });
   }
 };
 
@@ -125,9 +125,9 @@ export const logout = async (req: Request, res: Response): Promise<void> => {
     await prisma.active_tokens.deleteMany({
       where: { user_id: userId },
     });
-    res.status(200).json({ message: "Logout successful" });
+    res.status(200).json({error: false, message: "Logout successful" });
   }catch (error) {
     console.error(error);
-    res.status(500).json({ message: "An error occurred during logout" });
+    res.status(500).json({ error: true, message: "An error occurred during logout" });
   }
 }

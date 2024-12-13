@@ -23,16 +23,16 @@ export const getUserProfile = async (
     });
 
     if (!userProfile) {
-      res.status(404).json({status: "fail", message: "Profile not found" });
+      res.status(404).json({error: true, message: "Profile not found" });
       return;
     }
 
-    res.status(200).json({status: "success", data: userProfile});
+    res.status(200).json({error: false, data: userProfile});
   } catch (error) {
     console.error(error);
     res
       .status(500)
-      .json({ status: "error", message: "An error occurred while fetching the profile" });
+      .json({ error: true, message: "An error occurred while fetching the profile" });
   }
 };
 
@@ -46,7 +46,7 @@ export const updateUserProfile = async (
   try {
     // Validasi input
     if (!name || !age || !gender || !weight || !height) {
-      res.status(400).json({ status: "fail", message: "All profile fields are required" });
+      res.status(400).json({ error: true, message: "All profile fields are required" });
       return;
     }
 
@@ -61,9 +61,9 @@ export const updateUserProfile = async (
       },
     });
 
-    res.status(200).json({status : "success", data: updatedProfile});
+    res.status(200).json({error: false, data: updatedProfile});
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Failed to update profile" });
+    res.status(500).json({error: true, message: "Failed to update profile" });
   }
 };

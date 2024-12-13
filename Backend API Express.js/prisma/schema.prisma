@@ -28,7 +28,7 @@ model food_items {
   carbohydrate       Float
   fat                Float
   serving_size       Float                @default(100)
-  // image_url          String               @db.Text
+  image_url          String               @db.Text
   model_logs         model_logs[]
   recommendations    recommendations[]
   user_meals_history user_meals_history[]

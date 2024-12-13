@@ -3,7 +3,6 @@ import os
 import requests
 from io import BytesIO
 import json
-import mysql.connector
 import tensorflow as tf
 from .nutrition import load_nutrition_data, get_nutrition_info
 
@@ -45,7 +44,7 @@ def predict_food(image_url):
             for key, value in nutrition_info.items()
         }
         probability = prediction[0][predicted_class]
-        if (probability < 0.99999):
+        if (probability < 0.5):
             return None
         data = {
             "food_id": f"{food_id}",

@@ -10,9 +10,8 @@ export const getHistory = async (
   try {
     // Ambil user_id dari query atau autentikasi JWT (opsional)
     const userId = req.user?.id ? Number(req.user?.id) : null;
-
     if (!userId) {
-      res.status(400).json({ message: "User ID is required" });
+      res.status(400).json({ error: false, message: "User ID is required" });
       return;
     }
 
@@ -32,7 +31,7 @@ export const getHistory = async (
             carbohydrate: true,
             fat: true,
             serving_size: true,
-            // image_url: true,
+            image_url: true,
           },
         },
       },
@@ -41,14 +40,14 @@ export const getHistory = async (
 
     // Jika tidak ada riwayat
     if (!history || history.length === 0) {
-      res.status(404).json({status:"fail", message: "No scan history found for the user" });
+      res.status(404).json({error: true, message: "No scan history found for the user" });
       return;
     }
 
     // Kirim response
-    res.status(200).json({status:"success", data: history });
+    res.status(200).json({error: false, data: history });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ status: "Error", message: "Failed to fetch scan history", error });
+    res.status(500).json({ error: true, message: "Failed to fetch scan history"});
   }
 };

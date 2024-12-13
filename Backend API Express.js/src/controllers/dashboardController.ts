@@ -15,10 +15,9 @@ export const getDashboard = async (
     const userId = req.user?.id;
 
     if (!userId) {
-      res.status(401).json({ message: "Unauthorized access." });
+      res.status(401).json({error: true, message: "Unauthorized access." });
       return;
     }
-
     // Ambil data profil pengguna
     const userProfile = await prisma.profile.findUnique({
       where: { user_id: userId },
@@ -32,7 +31,7 @@ export const getDashboard = async (
     });
 
     if (!userProfile) {
-      res.status(404).json({ message: "User profile not found." });
+      res.status(404).json({error: true, message: "User profile not found." });
       return;
     }
 
@@ -52,13 +51,14 @@ export const getDashboard = async (
             protein: true,
             carbohydrate: true,
             fat: true,
+            image_url: true
           },
         },
       },
     });
 
     res.status(200).json({
-      status: "success",
+      error: false,
       data: {
         profile: userProfile,
         latestPredictions,
@@ -68,6 +68,6 @@ export const getDashboard = async (
     console.error("Error fetching dashboard data:", error);
     res
       .status(500)
-      .json({ status: "error", message: "An error occurred while fetching dashboard data." });
+      .json({ error: true, message: "An error occurred while fetching dashboard data." });
   }
 };

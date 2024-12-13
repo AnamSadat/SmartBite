@@ -17,6 +17,7 @@ CREATE TABLE `food_items` (
     `carbohydrate` DOUBLE NOT NULL,
     `fat` DOUBLE NOT NULL,
     `serving_size` DOUBLE NOT NULL DEFAULT 100,
+    `image_url` TEXT NOT NULL,
 
     PRIMARY KEY (`id_food_items`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

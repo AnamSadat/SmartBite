@@ -26,8 +26,8 @@ def recommend_by_calories(calorie_input, top_n=5):
         by='Calorie_Difference').head(top_n)
 
     # Pilih kolom nama makanan dan kalorinya untuk ditampilkan
-    return recommendations[['name', 'calories']].apply(
-        lambda row: {'foodname': row['name'], 'calories': row['calories']}, axis=1).tolist()
+    return recommendations[['id', 'name', 'image', 'calories']].apply(
+        lambda row: {'id': row['id'], 'foodname': row['name'], 'image': row['image'], 'calories': row['calories']}, axis=1).tolist()
 
 
 # # Input kalori dari terminal

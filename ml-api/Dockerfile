@@ -10,6 +10,7 @@ WORKDIR /app
 
 # Salin file requirements.txt ke dalam container
 COPY requirements.txt /app/
+COPY app/model /app/model
 
 # Install dependensi aplikasi
 RUN pip install --no-cache-dir -r requirements.txt
