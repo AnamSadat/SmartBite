@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:radius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:weightSum="1">
+
+        <!-- Image on the left -->
+        <ImageView
+            android:id="@+id/img_event_active"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/th"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_vertical"/>
+
+        <!-- Text on the right -->
+        <TextView
+            android:id="@+id/name_event_active"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nama Makanan"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:gravity="start"
+            android:textAlignment="textStart"
+            android:paddingEnd="8dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
